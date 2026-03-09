@@ -1,3 +1,7 @@
 numpy
 matplotlib
 scikit-learn
+uvicorn
+pandas
+fastapi
+scipy
