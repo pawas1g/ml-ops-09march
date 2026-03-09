@@ -11,7 +11,7 @@ pipeline {
 
         stage('Build Docker Image') {
             steps {
-                sh 'docker build -t ml-fastapi-app .'
+                sh 'docker build -t ml-fastapi-app dataset/'
             }
         }
 
