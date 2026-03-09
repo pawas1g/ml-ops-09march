@@ -1,0 +1,29 @@
+pipeline {
+    agent any
+
+    stages {
+
+        stage('Clone Repository') {
+            steps {
+                git 'https://github.com/pawas1g/ml-ops-09march.git'
+            }
+        }
+
+        stage('Build Docker Image') {
+            steps {
+                sh 'docker build -t ml-fastapi-app .'
+            }
+        }
+
+        stage('Run Container') {
+            steps {
+                sh '''
+                docker stop ml-container || true
+                docker rm ml-container || true
+                docker run -d -p 8000:8000 --name ml-container ml-fastapi-app
+                '''
+            }
+        }
+
+    }
+}
